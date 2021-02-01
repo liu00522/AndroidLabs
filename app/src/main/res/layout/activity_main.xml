@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textView"
         android:textSize="30dp" />
@@ -16,40 +14,46 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="fill"
+        android:layout_below="@id/textView"
+        android:paddingLeft="55dp"
+        android:paddingRight="55dp"
         android:text="@string/button" />
+    <!--left and right padding here for button size-->
 
     <CheckBox
         android:id="@+id/myCb"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_below="@id/textView"
+        android:layout_toRightOf="@id/button"
         android:text="@string/checkBox" />
 
     <ImageButton
         android:id="@+id/imgBtn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_below="@id/button"
         android:padding="0dp"
 
         android:src="@drawable/flag" />
 
     <Switch
         android:id="@+id/mySwitch"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_below="@id/myCb"
+        android:layout_toRightOf="@id/imgBtn"
         android:gravity="fill"
-        android:text="@string/switchBox" />
+        android:text="@string/switchBox"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imgBtn"
         android:hint="@string/editText"
         android:inputType="textPersonName" />
 
