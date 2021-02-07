@@ -5,39 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ProfileActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_message"
+        android:text="Your profile\nYour name:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emailBox"
+        android:id="@+id/nameBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type email here"
+        android:hint="Enter your name"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your email:" />
+
+    <EditText
+        android:id="@+id/emailBoxP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type your password:" />
+        android:text="Your picture:" />
 
-    <EditText
+    <ImageButton
+        android:id="@+id/imgBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@android:drawable/picture_frame" />
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword" />
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ButtonText" />
-
+        android:text="Click the button above to take a picture" />
 </LinearLayout>
