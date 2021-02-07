@@ -18,22 +18,51 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView mImageButton;
-//    public static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";      // should it be here?
+    public static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";      // should it be here?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        ImageButton imgBtn = findViewById(R.id.imgBtn);
+        mImageButton = findViewById(R.id.imgBtn);
         EditText emailBoxP = findViewById(R.id.emailBoxP);
 
-        imgBtn.setOnClickListener(click -> dispatchTakePictureIntent());
+        mImageButton.setOnClickListener(click -> dispatchTakePictureIntent());
         Intent fromMain = getIntent();
         String email = fromMain.getStringExtra("EMAIL");
         emailBoxP.setText(email);
 
-//        Log.e(ProfileActivity, "In function onCreate: ");         like this?
+        Log.e(ACTIVITY_NAME, "In function: onCreate()");         // like this?
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(ACTIVITY_NAME, "In function: onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(ACTIVITY_NAME, "In function: onResume()");
+    }
+
+    protected void onPause(String message) {
+        super.onPause();
+        Log.e(ACTIVITY_NAME, "In function: onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(ACTIVITY_NAME, "In function: onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(ACTIVITY_NAME, "In function: onDestroy()");
     }
 
 
@@ -53,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
         }
+        Log.e(ACTIVITY_NAME, "In function: onActivityResult()");
     }
 
 
