@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your profile\nYour name:"
+        android:text="@string/profileName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,25 +20,25 @@
         android:id="@+id/nameBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your name"
+        android:hint="@string/hintProfile"
         android:inputType="textPersonName" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your email:" />
+        android:text="@string/emailMsg" />
 
     <EditText
         android:id="@+id/emailBoxP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your email"
+        android:hint="@string/hintProfile"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your picture:" />
+        android:text="@string/yourPicture" />
 
     <ImageButton
         android:id="@+id/imgBtn"
@@ -50,5 +50,5 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click the button above to take a picture" />
+        android:text="@string/clickBtn" />
 </LinearLayout>

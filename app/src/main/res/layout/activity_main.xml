@@ -20,13 +20,13 @@
         android:id="@+id/emailBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type email here"
+        android:hint="@string/hint"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type your password:" />
+        android:text="@string/password" />
 
     <EditText
         android:layout_width="match_parent"

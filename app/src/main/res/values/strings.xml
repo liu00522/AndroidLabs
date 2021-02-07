@@ -2,4 +2,11 @@
     <string name="app_name">Android Labs</string>
     <string name="hello_message">Enter your email address!</string>
     <string name="ButtonText">LOGIN</string>
+    <string name="hint">Type email here</string>
+    <string name="password">Type your password:</string>
+    <string name="profileName">Your profile\nYour name:</string>
+    <string name="hintProfile">Enter your email</string>
+    <string name="emailMsg">Your email:</string>
+    <string name="yourPicture">Your picture:</string>
+    <string name="clickBtn">Click the button above to take a picture</string>
 </resources>
