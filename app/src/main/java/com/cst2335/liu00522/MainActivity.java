@@ -13,7 +13,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences pref = null;
-
+    EditText emailBox;
     //
 
     @Override
@@ -21,22 +21,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText emailBox = findViewById(R.id.emailBox);
+        emailBox = findViewById(R.id.emailBox);
         pref = getSharedPreferences("FileName", Context.MODE_PRIVATE);
         String savedEmailAdd = pref.getString("emailAdd", "");
         emailBox.setText(savedEmailAdd);
 
-        SharedPreferences.Editor edit = pref.edit();
-        Button btn = findViewById(R.id.button);
+         Button btn = findViewById(R.id.button);
         Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
 
         btn.setOnClickListener(click -> {
             goToProfile.putExtra("EMAIL", emailBox.getText().toString());
-            edit.putString("emailAdd", emailBox.getText().toString());
-            edit.commit();
             startActivity(goToProfile);
         });
 
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putString("emailAdd", emailBox.getText().toString());
+        edit.commit();
 
     }
 }
