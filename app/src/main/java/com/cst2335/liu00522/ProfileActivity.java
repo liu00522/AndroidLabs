@@ -10,6 +10,7 @@ import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -33,7 +34,15 @@ public class ProfileActivity extends AppCompatActivity {
         String email = fromMain.getStringExtra("EMAIL");
         emailBoxP.setText(email);
 
-        Log.e(ACTIVITY_NAME, "In function: onCreate()");         // like this?
+        Log.e(ACTIVITY_NAME, "In function: onCreate()");
+
+        Button chatButton = findViewById(R.id.gotoChat);
+        Intent gotoChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+        chatButton.setOnClickListener(click -> {
+            startActivity(gotoChat);
+        });
+
+
     }
 
     @Override
