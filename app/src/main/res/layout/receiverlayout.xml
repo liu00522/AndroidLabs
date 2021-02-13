@@ -12,14 +12,13 @@
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:src="@drawable/row_receive" />
 
         <TextView
-            android:id="@+id/textGoesHere"
+            android:id="@+id/receiverText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/avatar" />
+            android:layout_toRightOf="@id/avatar" />
     </RelativeLayout>
 
 

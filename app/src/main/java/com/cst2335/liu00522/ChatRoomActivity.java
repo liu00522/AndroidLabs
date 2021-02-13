@@ -1,96 +1,81 @@
 package com.cst2335.liu00522;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ChatRoomActivity extends AppCompatActivity {
     private MyListAdapter myListAdapter;
-    //    private ArrayList<String> elementsRev = new ArrayList<>();
-    private ArrayList<String> elementsRecv = new ArrayList<>();
-    //    private ArrayList<String> elementsSend = new ArrayList<>();
-    private ArrayList<String> display = new ArrayList<>();
+
     private EditText editText;
     private Button recvBtn;
     private Button sendBtn;
-
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-/*
-        elements.add("test1");
-        elements.add("test2");
-        elements.add("test3");
-        elements.add("test4");*/
 
         setContentView(R.layout.activity_chat_room);
+        listView = findViewById(R.id.listView);
 
-        myListAdapter = new MyListAdapter();
-        ListView listView = findViewById(R.id.listView);
+        Message msg = new Message();
+        msg.setType(0);
+        msg.setContent("test message here");
+
+        ArrayList<Message> list = new ArrayList<>();
+        list.add(msg);
+        MyListAdapter myListAdapter = new MyListAdapter(this, list);
         listView.setAdapter(myListAdapter);
+
+
+        //  alert to be added
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                alertDialogBuilder.setTitle("delete this?").setMessage("The selected row is: " + position
+                        + "\n" + "The database id is: " + id).
+                        setPositiveButton("Yes", (click, arg) -> {
+                            list.remove(position);
+                            myListAdapter.notifyDataSetChanged();
+                        }).setNegativeButton("No", (click, arg) -> {
+                }).create().show();
+
+                return true;
+            }
+        });
 
 
         editText = findViewById(R.id.editText);
         recvBtn = findViewById(R.id.receiveBtn);
         recvBtn.setOnClickListener(click -> {
             String textRecv = editText.getText().toString();
-            editText.setText(null);
-            elementsRecv.add(textRecv);
+            list.add(new Message(0, textRecv, BitmapFactory.decodeResource(getResources(), R.drawable.row_receive)));
+            editText.setText("");
             myListAdapter.notifyDataSetChanged();
         });
+
 
         sendBtn = findViewById(R.id.sendBtn);
         sendBtn.setOnClickListener(click -> {
-            String textSend = editText.getText().toString();
-            editText.setText(null);
-            elementsRecv.add(textSend);
+            String textRecv = editText.getText().toString();
+            list.add(new Message(1, textRecv, BitmapFactory.decodeResource(getResources(), R.drawable.row_send)));
+            editText.setText("");
             myListAdapter.notifyDataSetChanged();
 
         });
 
     }
-
-
-    private class MyListAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return elementsRecv.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return "this is row :" + position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inf = getLayoutInflater();
-
-
-            View leftRow = inf.inflate(R.layout.row_layout1, parent, false);
-
-            TextView leftRowText = leftRow.findViewById(R.id.textGoesHere);
-            leftRowText.setText(elementsRecv.get(position));
-            return leftRow;
-
-        }
-    }
 }
+
