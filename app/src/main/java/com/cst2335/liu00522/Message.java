@@ -5,12 +5,9 @@ import android.graphics.Bitmap;
 public class Message {
     private int type;
     private String content;
-    private Bitmap icon;
 
     //  cons
-
-
-    public Message( ) {
+    public Message() {
     }
 
     public Message(String content, int type) {
@@ -18,10 +15,10 @@ public class Message {
         this.type = type;
     }
 
-    public Message(int type, String content, Bitmap icon) {
+
+    public Message(int type, String content) {
         this.type = type;
         this.content = content;
-        this.icon = icon;
     }
 
     //  get & set
@@ -31,14 +28,6 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Bitmap getIcon() {
-        return icon;
-    }
-
-    public void setIcon(Bitmap icon) {
-        this.icon = icon;
     }
 
     //  getter

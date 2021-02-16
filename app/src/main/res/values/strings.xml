@@ -9,4 +9,12 @@
     <string name="emailMsg">Your email:</string>
     <string name="yourPicture">Your picture:</string>
     <string name="clickBtn">Click the button above to take a picture</string>
+    <string name="sendButton">send</string>
+    <string name="typehere">type here</string>
+    <string name="receiveButton">receive</string>
+    <string name="deleteThis">delete this?</string>
+    <string name="selectedRow">The selected row is: </string>
+    <string name="dbID">The database id is:  </string>
+    <string name="noBtn">No</string>
+    <string name="yesBtn">Yes</string>
 </resources>

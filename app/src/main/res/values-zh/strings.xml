@@ -10,4 +10,12 @@
     <string name="emailMsg">你的邮件地址</string>
     <string name="yourPicture">你的照片</string>
     <string name="clickBtn">点击拍照</string>
+    <string name="sendButton">发送</string>
+    <string name="typehere">在此处输入</string>
+    <string name="receiveButton">接收</string>
+    <string name="deleteThis">删除此行？</string>
+    <string name="selectedRow">选择行为：</string>
+    <string name="dbID">数据库ID：</string>
+    <string name="noBtn">取消</string>
+    <string name="yesBtn">确认</string>
 </resources>

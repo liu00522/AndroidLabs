@@ -30,11 +30,8 @@ public class ChatRoomActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
 
         Message msg = new Message();
-        msg.setType(0);
-        msg.setContent("test message here");
 
         ArrayList<Message> list = new ArrayList<>();
-        list.add(msg);
         MyListAdapter myListAdapter = new MyListAdapter(this, list);
         listView.setAdapter(myListAdapter);
 
@@ -44,12 +41,12 @@ public class ChatRoomActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                alertDialogBuilder.setTitle("delete this?").setMessage("The selected row is: " + position
-                        + "\n" + "The database id is: " + id).
-                        setPositiveButton("Yes", (click, arg) -> {
+                alertDialogBuilder.setTitle(R.string.deleteThis).setMessage(getString(R.string.selectedRow) + position
+                        + "\n" + getString(R.string.dbID) + id).
+                        setPositiveButton(R.string.yesBtn, (click, arg) -> {
                             list.remove(position);
                             myListAdapter.notifyDataSetChanged();
-                        }).setNegativeButton("No", (click, arg) -> {
+                        }).setNegativeButton(R.string.noBtn, (click, arg) -> {
                 }).create().show();
 
                 return true;
@@ -61,7 +58,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         recvBtn = findViewById(R.id.receiveBtn);
         recvBtn.setOnClickListener(click -> {
             String textRecv = editText.getText().toString();
-            list.add(new Message(0, textRecv, BitmapFactory.decodeResource(getResources(), R.drawable.row_receive)));
+            list.add(new Message(0, textRecv));
             editText.setText("");
             myListAdapter.notifyDataSetChanged();
         });
@@ -70,7 +67,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         sendBtn = findViewById(R.id.sendBtn);
         sendBtn.setOnClickListener(click -> {
             String textRecv = editText.getText().toString();
-            list.add(new Message(1, textRecv, BitmapFactory.decodeResource(getResources(), R.drawable.row_send)));
+            list.add(new Message(1, textRecv));
             editText.setText("");
             myListAdapter.notifyDataSetChanged();
 
