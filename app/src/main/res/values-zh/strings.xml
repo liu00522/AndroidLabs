@@ -18,4 +18,5 @@
     <string name="dbID">数据库ID：</string>
     <string name="noBtn">取消</string>
     <string name="yesBtn">确认</string>
+    <string name="gotoChat">去向聊天界面</string>
 </resources>
