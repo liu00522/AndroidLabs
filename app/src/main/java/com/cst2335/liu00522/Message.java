@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 public class Message {
     private int type;
     private String content;
+    private long id;
 
     //  cons
     public Message() {
@@ -20,6 +21,18 @@ public class Message {
         this.type = type;
         this.content = content;
     }
+
+    public Message(String content, long id) {
+        this.content = content;
+        this.id = id;
+    }
+
+    public Message(int type, String content, long id) {
+        this.type = type;
+        this.content = content;
+        this.id = id;
+    }
+
 
     //  get & set
     public void setType(int type) {
@@ -39,5 +52,7 @@ public class Message {
         return type;
     }
 
-
+    public long getId() {
+        return id;
+    }
 }
