@@ -117,13 +117,14 @@ public class ChatRoomActivity extends AppCompatActivity {
         results = db.query(false, MyOpener.TABLE_NAME, columns,
                 null, null, null, null, null, null);
 
-        printCursor(results, db.getVersion());
+        printCursor(results, db.getVersion()); //this moves cursor past last row
 
         //  column index
         int chatColumnIndex = results.getColumnIndex(MyOpener.COL_CHATS);
         int idColumnIndex = results.getColumnIndex(MyOpener.COL_ID);
         int typeColumnIndex = results.getColumnIndex(MyOpener.COL_Type);
 
+        results.moveToPosition((-1));
         //iterate over the results, return true if there is a next item:
         while (results.moveToNext()) {
             String chat = results.getString(chatColumnIndex);
@@ -149,22 +150,27 @@ public class ChatRoomActivity extends AppCompatActivity {
         int columnCount = c.getColumnCount();
         int chatsColumnIndex = c.getColumnIndex(MyOpener.COL_CHATS);      //    index of chats column
         int typeColumnIndex = c.getColumnIndex(MyOpener.COL_Type);      //    index of type column
+        String chatColumnName = c.getColumnName(chatsColumnIndex);        //    name of chatColumn
 
 
-        Log.d("Version Number -  ", "Database Version No is : " + version1);
-        Log.d("Column Number - ", "Number of columns is : " + columnCount);
-        Log.d("Row Number - ", "Number of rows is : " + rowCount);
-
-
-//        String chatColumnName = c.getColumnName(chatsColumnIndex);        //    name of chatColumn
 //        Log.d("name of column is", "printCursor: " + chatColumnName);
 
+
+        Log.i("Version Number -  ", "Database Version No is : " + version1);
+        Log.i("Column Number - ", "Number of columns is : " + columnCount);
+        Log.i("Row Number - ", "Number of rows is : n" + rowCount);
+        Log.i("Column Index - ", "Chat column index is : " + chatsColumnIndex);
+
+
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+
+            for (int i = 0; i < c.getCount(); i++) {
+                String chatMessage = c.getString(chatsColumnIndex);
+                Log.i("msg", "fds" + chatMessage);
+                c.moveToNext();
+            }
         }
-
-
-
-
-
-
+    }
 
 }

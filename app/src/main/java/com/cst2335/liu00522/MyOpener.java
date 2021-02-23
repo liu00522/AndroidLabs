@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyOpener extends SQLiteOpenHelper {
 
     protected final static String DATABASE_NAME = "ChatDB";
-    protected final static int VERSION_NUM = 11;
+    protected final static int VERSION_NUM = 3;
     public final static String TABLE_NAME = "CHATSTABLE";
     public final static String COL_EMAIL = "EMAIL";
     public final static String COL_NAME = "NAME";
