@@ -132,7 +132,7 @@ public class WeatherForecast extends AppCompatActivity {
                     image = BitmapFactory.decodeStream(urlConnection.getInputStream());
                 }
 
-                ////////////////////////////////
+                //
                 if (fileExistance(iconName + ".png")) {
                     Log.i("WeatherForecast", "Downloading" + iconName + ".png");
                     FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
@@ -140,7 +140,7 @@ public class WeatherForecast extends AppCompatActivity {
                     outputStream.flush();
                     outputStream.close();
                 } else {
-                    Log.i("WeatherForecast", "Already exists, retrieving " + iconName + ".png");
+                    Log.i("WeatherForecast", "exists, retrieving " + iconName + ".png");
                     FileInputStream fis = null;
                     try {
                         fis = openFileInput(getBaseContext().getFileStreamPath(iconName + ".png").toString());
@@ -150,7 +150,7 @@ public class WeatherForecast extends AppCompatActivity {
                     image = BitmapFactory.decodeStream(fis);
                 }
 
-                ////////////////////////////////
+
 
 
             } catch (Exception e) {
@@ -175,10 +175,10 @@ public class WeatherForecast extends AppCompatActivity {
         //Type3 from DoinBackground is the return from doInBackground "Done"
         public void onPostExecute(String fromDoInBackground) {  //  not an array "Done"
 //            Log.i("HTTP", fromDoInBackground);
-            currentTemptv.setText(currentTemp + " °C");
-            minTemptv.setText(min + "  °C");
-            maxTemptv.setText(max + "  °C");
-            uvRatingtv.setText(Double.toString(uv));
+            currentTemptv.setText("Current Temperature: " + currentTemp + "°C");
+            minTemptv.setText("Minimum Temperature: " + min + "°C");
+            maxTemptv.setText("Maximum Temperature: " + max + "°C");
+            uvRatingtv.setText("UV rating: " + Double.toString(uv));
             imageView.setImageBitmap(image);
             pgsBar.setVisibility(View.INVISIBLE);
 
