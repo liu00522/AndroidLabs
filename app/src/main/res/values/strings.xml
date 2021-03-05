@@ -18,4 +18,5 @@
     <string name="noBtn">No</string>
     <string name="yesBtn">Yes</string>
     <string name="gotoChat">go to chat</string>
+    <string name="gotoWeather">GO TO WEATHER</string>
 </resources>
