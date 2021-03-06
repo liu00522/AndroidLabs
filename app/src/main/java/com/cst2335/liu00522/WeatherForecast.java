@@ -38,6 +38,8 @@ public class WeatherForecast extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
 
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         ForecastQuery query = new ForecastQuery();
         query.execute("http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=7e943c97096a9784391a981c4d878b22&mode=xml&units=metric");  //Type 1
@@ -116,7 +118,7 @@ public class WeatherForecast extends AppCompatActivity {
                 while ((line = reader.readLine()) != null) {
                     sb.append(line + "\n");
                 }
-                String result = sb.toString(); //result is the whole string
+                String result = sb.toString();
 
                 JSONObject jsonObject = new JSONObject(result);
 
@@ -140,7 +142,7 @@ public class WeatherForecast extends AppCompatActivity {
                     outputStream.flush();
                     outputStream.close();
                 } else {
-                    Log.i("WeatherForecast", "exists, retrieving " + iconName + ".png");
+                    Log.i("WeatherForecast", "Already exists, retrieving " + iconName + ".png");
                     FileInputStream fis = null;
                     try {
                         fis = openFileInput(getBaseContext().getFileStreamPath(iconName + ".png").toString());
@@ -151,20 +153,18 @@ public class WeatherForecast extends AppCompatActivity {
                 }
 
 
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return "Done";
         }
 
-        ////////////////////////////////
+
         public boolean fileExistance(String fname) {
             File file = getBaseContext().getFileStreamPath(fname);
             return file.exists();
         }
-        ////////////////////////////////
+
 
         //Type 2
         public void onProgressUpdate(Integer... args) {
