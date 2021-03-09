@@ -89,12 +89,15 @@ public class WeatherForecast extends AppCompatActivity {
                     if (eventType == XmlPullParser.START_TAG) {
                         if (xpp.getName().equals("temperature")) {
                             currentTemp = xpp.getAttributeValue(null, "value");
+                            currentTemp = String.valueOf(Math.round(Float.parseFloat(String.valueOf(currentTemp))));
                             publishProgress(25);
 
                             min = xpp.getAttributeValue(null, "min");
+                            min = String.valueOf(Math.round(Float.parseFloat(String.valueOf(min))));
                             publishProgress(50);
 
                             max = xpp.getAttributeValue(null, "max");
+                            max = String.valueOf(Math.round(Float.parseFloat(String.valueOf(max))));
                             publishProgress(75);
                         } else if (xpp.getName().equals("weather")) {
                             iconName = xpp.getAttributeValue(null, "icon");
