@@ -10,40 +10,47 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="300dp"
-        android:layout_height="wrap_content" />
-
-    <GridLayout
-        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@id/editText"
+        android:layout_alignParentTop="true" />
 
 
-        <Button
-            android:id="@+id/sendBtn"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="1"
-            android:layout_weight="1"
-            android:text="@string/sendButton" />
+    <Button
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="9"
-            android:hint="@string/typehere"
-            android:inputType="text" />
+        android:id="@+id/sendBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/sendButton" />
 
-        <Button
-            android:id="@+id/receiveBtn"
-            android:layout_height="match_parent"
-            android:layout_columnWeight="1"
-            android:text="@string/receiveButton" />
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/sendBtn"
 
-    </GridLayout>
+        android:hint="@string/typehere"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/receiveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/editText"
+        android:text="@string/receiveButton" />
+
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
         android:layout_toRightOf="@id/listView" />
 
 
