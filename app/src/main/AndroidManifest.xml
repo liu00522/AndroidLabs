@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLabs"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WeatherForecast"></activity>
+        <activity android:name=".EmptyActivity"></activity>
+        <activity android:name=".WeatherForecast" />
         <activity android:name=".ChatRoomActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity">

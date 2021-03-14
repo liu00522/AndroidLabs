@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
@@ -24,6 +25,10 @@ public class ChatRoomActivity extends AppCompatActivity {
     private Button recvBtn;
     private Button sendBtn;
     private ListView listView;
+    public static final String VIEW_SELECTED = "VIEW";
+    public static final String POSITION_POSITION = "POSITION";
+    public static final String ID = "ID";
+
     Cursor results;
     ArrayList<Message> chatList = new ArrayList<>();
     ContentValues newRowValues = new ContentValues();
@@ -36,6 +41,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
         listView = findViewById(R.id.listView);
+        boolean isTablet = findViewById(R.id.frameLayout) != null;
 
         Message msg = new Message();
 
@@ -43,6 +49,33 @@ public class ChatRoomActivity extends AppCompatActivity {
         listView.setAdapter(myListAdapter);
 
         loadDataFromDatabase();
+
+        // show diaglog box with details of chat message
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle dataToPass = new Bundle();
+                dataToPass.putString("Message", list.get(position).getContent());
+                dataToPass.putInt("Type", list.get(position).getType());
+                dataToPass.putLong("ID", list.get(position).getId());
+                if (isTablet) {
+                    DetailsFragment detailsFragment = new DetailsFragment();
+                    detailsFragment.setArguments(dataToPass);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frameLayout, detailsFragment)
+                            .commit();
+                } else {    //phone
+                    Intent newIntent = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                    newIntent.putExtras(dataToPass);
+                    startActivity(newIntent);
+
+
+                }
+
+            }
+        });
+
 
         //  alert to be added
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);

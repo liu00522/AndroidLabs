@@ -134,7 +134,7 @@ public class WeatherForecast extends AppCompatActivity {
                 urlConnection.connect();
                 int responseCode = urlConnection.getResponseCode();
                 if (responseCode == 200) {
-                    image = BitmapFactory.decodeStream(urlConnection.getInputStream());
+                    image = BitmapFactory.decodeStream(urlConnection.getInputStream()); 
                 }
 
                 //
