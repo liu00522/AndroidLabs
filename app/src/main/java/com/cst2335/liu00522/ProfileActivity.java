@@ -49,6 +49,11 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+        // Toolbar Page btn
+
+        Button gotoToolbar = findViewById(R.id.gotoToolbarPage);
+
+
     }
 
     @Override
