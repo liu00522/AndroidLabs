@@ -108,10 +108,9 @@ public class ProfileActivity extends AppCompatActivity {
             mImageButton.setImageBitmap(imageBitmap);
         }
 
-        if ( resultCode == 500) {
+        if (resultCode == 500) {
             Intent intentLogin = new Intent(ProfileActivity.this, MainActivity.class);
             startActivityForResult(intentLogin, 500);
-
         }
 
 

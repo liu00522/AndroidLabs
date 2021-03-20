@@ -24,4 +24,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="gotoToolbarPage">Go to Toolbar page</string>
+    <string name="itemOneTitle">One</string>
+    <string name="itemTwoTitle">Two</string>
+    <string name="itemThreeTitle">Three</string>
+    <string name="itemFourTitle">Four</string>
 </resources>
