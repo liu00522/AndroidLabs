@@ -52,9 +52,14 @@ public class ProfileActivity extends AppCompatActivity {
         // Toolbar Page btn
 
         Button gotoToolbar = findViewById(R.id.gotoToolbarPage);
+        Intent gotoToolbarPage = new Intent(ProfileActivity.this, TestToolbar.class);
+        gotoToolbar.setOnClickListener(click -> {
+            startActivityForResult(gotoToolbarPage, 21);
+        });
 
-
+        //
     }
+
 
     @Override
     protected void onStart() {

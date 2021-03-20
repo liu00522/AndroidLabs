@@ -8,6 +8,8 @@
     <string name="hintProfile">Enter your email</string>
     <string name="emailMsg">Your email:</string>
     <string name="yourPicture">Your picture:</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="clickBtn">Click the button above to take a picture</string>
     <string name="sendButton">send</string>
     <string name="typehere">type here</string>
