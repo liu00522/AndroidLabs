@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,27 +18,30 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class TestToolbar extends AppCompatActivity {
+public class TestToolbar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_toolbar);
 
-        //
+        //  gets the toolbar from the layout:
         Toolbar tBar = findViewById(R.id.my_toolbar);
         setSupportActionBar(tBar);
 
-        //
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
-//                (this, drawer, tBar, R.string.open, R.string.close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
+        //  For NavigationDrawer:
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
+                (this, drawer, tBar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         //
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -70,4 +74,30 @@ public class TestToolbar extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        switch (itemId) {
+            case R.id.gotoChat:
+                Intent intentChat = new Intent(TestToolbar.this, ChatRoomActivity.class);
+                startActivity(intentChat);
+                break;
+
+            case R.id.weatherForecast:
+                Intent intentWeather = new Intent(TestToolbar.this, WeatherForecast.class);
+                startActivity(intentWeather);
+                break;
+
+            case R.id.backToLogin:
+                Intent intentProfile = new Intent(TestToolbar.this, ProfileActivity.class);
+                setResult(500, intentProfile);
+                finish();
+
+                break;
+
+
+        }
+
+        return false;
+    }
 }

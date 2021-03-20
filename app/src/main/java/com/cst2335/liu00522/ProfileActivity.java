@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
         Button gotoToolbar = findViewById(R.id.gotoToolbarPage);
         Intent gotoToolbarPage = new Intent(ProfileActivity.this, TestToolbar.class);
         gotoToolbar.setOnClickListener(click -> {
-            startActivityForResult(gotoToolbarPage, 21);
+            startActivityForResult(gotoToolbarPage, 500);
         });
 
         //
@@ -107,6 +107,14 @@ public class ProfileActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
         }
+
+        if ( resultCode == 500) {
+            Intent intentLogin = new Intent(ProfileActivity.this, MainActivity.class);
+            startActivityForResult(intentLogin, 500);
+
+        }
+
+
         Log.e(ACTIVITY_NAME, "In function: onActivityResult()");
     }
 
